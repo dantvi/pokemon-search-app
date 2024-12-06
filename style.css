@@ -4,6 +4,7 @@ html {
 
 body {
     margin: 0;
+    text-align: center;
     color: whitesmoke;
     background-color: #0a0a23;
 }
@@ -17,8 +18,37 @@ body {
 }
 
 main {
-    background-color: rgb(24, 100, 243);            /* Remove later */
+    background-color: rgb(12, 54, 133);
     width: 30%;
+    padding: 10px;
     border-radius: 10px;
+    box-shadow: 10px 10px rgb(174, 223, 240);
 }
 
+.search-container {
+    margin: 10px 10px 20px 10px;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: #fff;
+    outline: none;
+    padding-left: 10px;
+    height: 25px;
+}
+
+button {
+    cursor: pointer;
+    background-color: rgb(190, 182, 182);
+    border: none;
+    border-radius: 20px;
+    height: 30px;
+    outline: none;
+    margin-left: 10px;
+    padding: 0 20px;
+}
+
+button:hover {
+    filter: brightness(110%);
+}
