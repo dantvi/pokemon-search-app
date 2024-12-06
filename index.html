@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Hellooooooo</h1>
+    <div class="container">
+        <h1>Pokémon Search App</h1>
+        <main>
+            <form>
+                <label for="search-input">Search for Pokémon Name or ID:</label>
+                <div search-container>
+                    <input id="search-input" type="text" required>
+                    <button id="search-button" type="submit">Search</button>
+                </div>
+            </form>
+            <div class="name-and-id">
+                <span id="pokemon-name">ABSOL</span>
+                <span id="pokemon-id">#359</span>
+            </div>
+            <div class="size">
+                <span id="weight">Weight: 470</span>
+                <span id="height">Height: 12</span>
+            </div>
+            <div class="sprite-container">
+                <img id="sprite" src="" alt="">
+            </div>
+            <div class="types-container">
+                <span id="types">dark</span>
+            </div>
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Base</th>
+                            <th>Stats</th>
+                        </tr>
+                        <tr>
+                            <th>HP:</th>
+                            <th id="hp"></th>
+                        </tr>
+                        <tr>
+                            <th>Attack:</th>
+                            <th id="attack"></th>
+                        </tr>
+                        <tr>
+                            <th>Defense:</th>
+                            <th id="defense"></th>
+                        </tr>
+                        <tr>
+                            <th>Sp. Attack:</th>
+                            <th id="special-attack"></th>
+                        </tr>
+                        <tr>
+                            <th>Sp. Defense:</th>
+                            <th id="special-defense"></th>
+                        </tr>
+                        <tr>
+                            <th>Speed:</th>
+                            <th id="speed"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
     <!-- Script -->
     <script src="script.js"></script>
 </body>
+
 </html>
