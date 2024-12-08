@@ -8,7 +8,7 @@ const idEl = document.getElementById('pokemon-id');
 const weightEl = document.getElementById('weight');
 const heightEl = document.getElementById('height');
 const spriteEl = document.getElementById('sprite');
-const typesEl = document.getElementById('types');
+const typesContainerEl = document.getElementById('types-container');
 const hpEl = document.getElementById('hp');
 const attackEl = document.getElementById('attack');
 const defenseEl = document.getElementById('defense');
@@ -66,7 +66,7 @@ const fetchDetailedPokemonData = async (detailedUrl) => {
     }
     const data = await response.json();
     console.log('detailed data:', data);
-
+    displayPokemonData(data);
   } catch (error) {
     // Log any errors that occur during the fetch
     console.log('Error while fetching pokemon data: ', error);
@@ -74,9 +74,30 @@ const fetchDetailedPokemonData = async (detailedUrl) => {
 }
 
 
-const displayPokemonData = () => { }
+const displayPokemonData = (data) => {
+  nameEl.innerText = data.name.toUpperCase();
+  idEl.innerText = `#${data.id}`;
+  weightEl.innerText = `Weight: ${data.weight}`;
+  heightEl.innerText = `Height: ${data.height}`;
+  spriteEl.src = data.sprites.front_default;
+  updateTypes(data);
+  hpEl.innerText = data.stats[0].base_stat;
+  attackEl.innerText = data.stats[1].base_stat;
+  defenseEl.innerText = data.stats[2].base_stat;
+  specialAttackEl.innerText = data.stats[3].base_stat;
+  specialDefenseEl.innerText = data.stats[4].base_stat;
+  speedEl.innerText = data.stats[5].base_stat;
+}
 
-
+const updateTypes = (data) => {
+  typesContainerEl.innerHTML = '';
+  data.types.forEach(typeInfo => {
+    const typeEl = document.createElement('span');
+    typeEl.innerText = typeInfo.type.name.toUpperCase();
+    typeEl.classList.add('type-badge');
+    typesContainerEl.appendChild(typeEl);
+  });
+}
 
 
 
