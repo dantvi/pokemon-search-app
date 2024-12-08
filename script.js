@@ -30,6 +30,7 @@ const searchPokemon = (pokemon, data) => {
   if (foundPokemon) {
     // Log the found Pokémon's name and URL to the console
     console.log('Found Pokémon:', foundPokemon);
+    fetchDetailedPokemonData(foundPokemon.url);
   } else {
     // Alert the user if the Pokémon is not found
     alert('Pokémon not found');
@@ -53,6 +54,33 @@ const fetchPokemonData = async (inputPokemon) => {
     console.log('Error while fetching pokemon data: ', error);
   }
 }
+
+
+
+const fetchDetailedPokemonData = async (detailedUrl) => {
+  try {
+    // Fetch the Pokémon info from the API
+    const response = await fetch(detailedUrl);
+    if (!response.ok) {
+      throw new Error(`Connection error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log('detailed data:', data);
+
+  } catch (error) {
+    // Log any errors that occur during the fetch
+    console.log('Error while fetching pokemon data: ', error);
+  }
+}
+
+
+const displayPokemonData = () => { }
+
+
+
+
+
+
 
 // Handles form submission, retrieves user input, and initiates the fetch process
 const processFormData = (e) => {
