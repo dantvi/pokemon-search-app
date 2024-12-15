@@ -53,12 +53,23 @@ button:hover {
     filter: brightness(110%);
 }
 
-#types {
-    text-transform: uppercase;
+.type-badge {
+    color: black;
+    background-color: rgb(170, 170, 170);
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .table-container {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+}
+
+/* Media Query: Phone */
+@media screen and (max-width: 690px) {
+    main {
+        width: 80%;
+    }
 }
