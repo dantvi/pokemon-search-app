@@ -2,7 +2,7 @@
 const userInputEl = document.getElementById('search-input');
 const button = document.getElementById('search-button');
 
-// Elements to update
+// Elements to update with Pokémon data
 const nameEl = document.getElementById('pokemon-name');
 const idEl = document.getElementById('pokemon-id');
 const weightEl = document.getElementById('weight');
@@ -16,8 +16,7 @@ const specialAttackEl = document.getElementById('special-attack');
 const specialDefenseEl = document.getElementById('special-defense');
 const speedEl = document.getElementById('speed');
 
-
-// Searches for a Pokémon in the provided data
+// Searches for a Pokémon in the provided data by name or ID
 const searchPokemon = (pokemon, data) => {
   const searchingFor = pokemon.toLowerCase();
   // Find a Pokémon by name or ID in the data
@@ -28,8 +27,6 @@ const searchPokemon = (pokemon, data) => {
   });
 
   if (foundPokemon) {
-    // Log the found Pokémon's name and URL to the console
-    console.log('Found Pokémon:', foundPokemon);
     fetchDetailedPokemonData(foundPokemon.url);
   } else {
     // Alert the user if the Pokémon is not found
@@ -51,12 +48,11 @@ const fetchPokemonData = async (inputPokemon) => {
     searchPokemon(inputPokemon, data);
   } catch (error) {
     // Log any errors that occur during the fetch
-    console.log('Error while fetching pokemon data: ', error);
+    console.error('Error while fetching pokemon data: ', error);
   }
 }
 
-
-
+// Fetches detailed data about a specific Pokémon from its URL
 const fetchDetailedPokemonData = async (detailedUrl) => {
   try {
     // Fetch the Pokémon info from the API
@@ -65,15 +61,14 @@ const fetchDetailedPokemonData = async (detailedUrl) => {
       throw new Error(`Connection error! Status: ${response.status}`);
     }
     const data = await response.json();
-    console.log('detailed data:', data);
     displayPokemonData(data);
   } catch (error) {
     // Log any errors that occur during the fetch
-    console.log('Error while fetching pokemon data: ', error);
+    console.error('Error while fetching pokemon data: ', error);
   }
 }
 
-
+// Updates the DOM to display detailed data about the Pokémon
 const displayPokemonData = (data) => {
   nameEl.innerText = data.name.toUpperCase();
   idEl.innerText = `#${data.id}`;
@@ -89,6 +84,7 @@ const displayPokemonData = (data) => {
   speedEl.innerText = data.stats[5].base_stat;
 }
 
+// Updates the Pokémon's types as badges in the DOM
 const updateTypes = (data) => {
   typesContainerEl.innerHTML = '';
   data.types.forEach(typeInfo => {
@@ -98,10 +94,6 @@ const updateTypes = (data) => {
     typesContainerEl.appendChild(typeEl);
   });
 }
-
-
-
-
 
 // Handles form submission, retrieves user input, and initiates the fetch process
 const processFormData = (e) => {
